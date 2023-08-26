@@ -1,0 +1,12 @@
+{
+  "name": "@pdchen/markdown-typings",
+  "version": "1.0.0",
+  "description": "",
+  "typings": "./index.d.ts",
+  "scripts": {
+    "build": "tsc ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

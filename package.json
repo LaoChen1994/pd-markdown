@@ -1,0 +1,31 @@
+{
+  "name": "@pdchen/markdown-root",
+  "version": "1.0.0",
+  "description": "markdown monorepo root",
+  "scripts": {
+    "build:processor": "pnpm --filter @pdchen/markdown-processor run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.5.1",
+    "@vitejs/plugin-react": "^4.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9"
+  },
+  "devDependencies": {
+    "@types/mdast": "3.0.12",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.2",
+    "rimraf": "^5.0.1"
+  }
+}
