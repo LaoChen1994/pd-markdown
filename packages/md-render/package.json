@@ -23,8 +23,9 @@
   },
   "keywords": [],
   "type": "commonjs",
-  "author": "",
-  "license": "ISC",
+  "author": "PD Chen",
+  "license": "MIT",
+  "private": false,
   "dependencies": {
     "@pdchen/markdown-typings": "workspace:^",
     "@vitejs/plugin-react-swc": "^3.3.2",
