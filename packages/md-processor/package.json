@@ -5,6 +5,7 @@
   "scripts": {
     "build": "rimraf dist && tsc && vite build"
   },
+  "private": false,
   "exports": {
     "*": {
       "require": "./distindex.cjs.js",
@@ -14,8 +15,8 @@
   },
   "typings": "./dist/typings/index.d.ts",
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "PD Chen",
+  "license": "MIT",
   "dependencies": {
     "@pdchen/markdown-typings": "workspace:^",
     "rehype-attr": "^2.1.4",
