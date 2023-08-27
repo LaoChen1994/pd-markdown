@@ -1,11 +1,11 @@
 import path from "path";
 import { defineConfig } from "vite";
-import packageJson from "./package.json";
+import dts from 'vite-plugin-dts'
 
 const fileName = {
-  es: `index.mjs`,
-  cjs: `index.cjs`,
-  iife: `index.iife.js`,
+  es: `index.es.js`,
+  cjs: `index.cjs.js`,
+  umd: `index.umd.js`,
 };
 
 const formats = Object.keys(fileName) as Array<keyof typeof fileName>;
@@ -19,5 +19,10 @@ module.exports = defineConfig({
       formats,
       fileName: (format) => fileName[format as keyof typeof fileName],
     },
-  }
+  },
+  plugins: [
+    dts({
+      outDir: "./dist/typings",
+    })
+  ]
 });

@@ -18,6 +18,6 @@
     "allowJs": true,
     "types": ["vite/client", "node", "@pdchen/markdown-typings"]
   },
-  "include": ["src"],
+  "include": ["./src"],
   "exclude": ["**/*.test.ts", "node_modules", "test/**", ".history/**"]
 }

@@ -29,8 +29,8 @@ class MDProcessor {
     return this.processor.run(data) as Promise<Content>;
   }
 
-  public getContentTree(content: string) {
-    return this.processor.process(content);
+  public async getContentTree(content: string) {
+    await this.processor.process(content);
   }
 }
 

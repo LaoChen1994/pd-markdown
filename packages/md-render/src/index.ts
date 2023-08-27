@@ -1,3 +1,4 @@
-export default () => {
-  console.log('this is md render')
-}
+import  MarkdownRender from './render';
+export * as DefaultComponent from './components';
+
+export default MarkdownRender
