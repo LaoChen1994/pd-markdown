@@ -1,6 +1,6 @@
 {
   "name": "@pdchen/markdown-processor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react markdown ast processor with custom plugins",
   "scripts": {
     "build": "rimraf dist && tsc && vite build"
