@@ -19,6 +19,11 @@
     "test": "vitest",
     "typecheck": "tsc --project tsconfig.json --noEmit"
   },
+  "files": [
+    "./dist/*",
+    "./typings.d.ts",
+    "./package.json"
+  ],
   "keywords": [],
   "type": "commonjs",
   "author": "PD Chen",

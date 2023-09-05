@@ -4,7 +4,7 @@ import Render from '@pdchen/markdown-render';
 import "@pdchen/markdown-render/style"
 import './App.css'
 function App() {
-  const [tree, setTree] = useState<any>({})
+  const [tree, setTree] = useState({})
 
   const onChange = async (value: string): Promise<void> => {
     const html = await processor.parse(value)

@@ -12,6 +12,10 @@
       "default": "./dist/index.es.js"
     }
   },
+  "files": [
+    "./dist/*",
+    "./package.json"
+  ],
   "typings": "./dist/typings/index.d.ts",
   "keywords": [],
   "author": "PD Chen",
