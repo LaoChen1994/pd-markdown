@@ -7,7 +7,7 @@ import dts from 'vite-plugin-dts'
 import path from "path";
 const fileName = {
   es: `index.es.js`,
-  cjs: `index.cjs.js`,
+  umd: `index.cjs.js`,
 };
 
 const formats = Object.keys(fileName) as Array<keyof typeof fileName>;
@@ -34,5 +34,10 @@ export default defineConfig({
       formats,
       fileName: (format) => fileName[format as keyof typeof fileName],
     },
-  }
+    sourcemap: true,
+    target: "es2015",
+    rollupOptions: {
+      external: ['react', 'react-dom']
+    }
+  },
 })

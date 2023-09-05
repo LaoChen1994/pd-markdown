@@ -1,6 +1,7 @@
 import DefaultComponent from "./components";
 import { MDXContextProvider } from "./context";
-import { CSSProperties, useMemo, FunctionComponent, PropsWithChildren } from "react";
+import * as React from 'react'
+import type { CSSProperties, FunctionComponent, PropsWithChildren } from "react";
 
 import "./index.css";
 import { IRoot, ITree } from "../typings";
@@ -14,11 +15,10 @@ interface IRender extends IBaseProps {
   node: ITree | IRoot;
   extraComponents?: Record<string, FunctionComponent<PropsWithChildren<any>>>;
 }
-
 const Render: FunctionComponent<IRender> = (props) => {
   const { node, extraComponents = {} } = props;
 
-  const Component = useMemo(() => {
+  const Component = React.useMemo(() => {
     return DefaultComponent[node.type as keyof typeof DefaultComponent];
   }, [node.type]);
 

@@ -19,6 +19,7 @@ module.exports = defineConfig({
       formats,
       fileName: (format) => fileName[format as keyof typeof fileName],
     },
+    sourcemap: true
   },
   plugins: [
     dts({
