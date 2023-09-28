@@ -9,6 +9,7 @@
   "exports": {
     ".": {
       "require": "./dist/index.cjs.js",
+      "import": "./dist/index.es.js",
       "default": "./dist/index.es.js"
     }
   },
