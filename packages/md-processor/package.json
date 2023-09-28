@@ -1,6 +1,6 @@
 {
   "name": "@pdchen/markdown-processor",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "react markdown ast processor with custom plugins",
   "scripts": {
     "build": "rimraf dist && tsc && vite build"
@@ -13,7 +13,7 @@
       "default": "./dist/index.es.js"
     }
   },
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index",
   "files": [
     "./dist/**/*",
     "./dist/*",
