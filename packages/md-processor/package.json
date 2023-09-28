@@ -13,7 +13,7 @@
       "default": "./dist/index.es.js"
     }
   },
-  "types": "./dist/typings/index.d.ts",
+  "types": "./dist/index.d.ts",
   "files": [
     "./dist/**/*",
     "./dist/*",

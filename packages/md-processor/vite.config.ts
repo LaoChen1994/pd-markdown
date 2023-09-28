@@ -1,6 +1,6 @@
 import path from "path";
 import { defineConfig } from "vite";
-import dts from 'vite-plugin-dts'
+import dts from "vite-plugin-dts";
 
 const fileName = {
   es: `index.es.js`,
@@ -17,13 +17,13 @@ module.exports = defineConfig({
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "processor",
       formats,
-      fileName: (format) => fileName[format as keyof typeof fileName],
+      fileName: (format: string) => fileName[format as keyof typeof fileName],
     },
-    sourcemap: true
+    sourcemap: true,
   },
   plugins: [
     dts({
-      outDir: "./dist/typings",
-    })
-  ]
+      outDir: "./dist",
+    }),
+  ],
 });
