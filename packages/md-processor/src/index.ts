@@ -7,6 +7,8 @@ import formatTable from "./plugins/formatTable";
 import formatParagraph from "./plugins/formatParagraph";
 import formatListItem from "./plugins/formatListItem";
 
+import JSDOM from "jsdom";
+
 class MDProcessor {
   private processor: Processor;
   constructor() {
@@ -15,6 +17,10 @@ class MDProcessor {
   }
 
   private init() {
+    if (!window) {
+      (global as Record<string, never>).document = new JSDOM().window.document;
+    }
+
     this.processor
       .use(remarkParse)
       .use(formatTable)

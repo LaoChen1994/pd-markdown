@@ -14,8 +14,6 @@ function App() {
     setTree(html)
   }
 
-  console.log(Render)
-
   useEffect(() => {
     onChange(`|t1|t2|t3|
         |---|---|---|
