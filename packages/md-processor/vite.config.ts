@@ -1,6 +1,7 @@
 import path from "path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import viteCompression from 'vite-plugin-compression'
 
 const fileName = {
   es: `index.es.js`,
@@ -24,5 +25,6 @@ export default defineConfig({
     dts({
       outDir: "./dist",
     }),
+    viteCompression()
   ],
 });
