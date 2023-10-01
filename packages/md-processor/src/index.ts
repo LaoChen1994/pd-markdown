@@ -4,6 +4,8 @@ import MDProcessor from "./core";
   if (!global.window) {
     const { JSDOM } = await import("jsdom");
     global.document = new JSDOM().window.document;
+
+    console.log("server dom init done");
   }
 })();
 
