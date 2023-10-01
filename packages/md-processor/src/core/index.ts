@@ -22,7 +22,17 @@ class MDProcessor {
     this.initProcessor();
   }
 
-  private initProcessor() {
+  private async initServerDOM() {
+    if (global.window) return;
+
+    const { JSDOM } = await import("jsdom");
+    global.document = new JSDOM().window.document;
+    console.log("server dom init done");
+  }
+
+  private async initProcessor() {
+    await this.initServerDOM();
+
     let processor = unified();
 
     for (const [plugin, enable] of PLUGINS) {
