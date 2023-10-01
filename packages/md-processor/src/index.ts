@@ -7,27 +7,30 @@ import formatTable from "./plugins/formatTable";
 import formatParagraph from "./plugins/formatParagraph";
 import formatListItem from "./plugins/formatListItem";
 
-import JSDOM from "jsdom";
+const PLUGINS = [
+  [remarkParse, true],
+  [formatTable, true],
+  [formatParagraph, true],
+  [formatListItem, true],
+  [remarkMDX, true],
+  [remarkGfm, true],
+];
 
 class MDProcessor {
   private processor: Processor;
   constructor() {
-    this.processor = unified();
-    this.init();
+    this.initProcessor();
   }
 
-  private init() {
-    if (!window) {
-      (global as Record<string, never>).document = new JSDOM().window.document;
+  private initProcessor() {
+    let processor = unified();
+
+    for (const [plugin, enable] of PLUGINS) {
+      if (!enable) continue;
+      processor = processor.use(plugin);
     }
 
-    this.processor
-      .use(remarkParse)
-      .use(formatTable)
-      .use(formatParagraph)
-      .use(formatListItem)
-      .use(remarkMDX)
-      .use(remarkGfm);
+    this.processor = processor;
   }
 
   public async parse(content: string) {

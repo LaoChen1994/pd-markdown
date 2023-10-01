@@ -5,7 +5,6 @@ import dts from "vite-plugin-dts";
 const fileName = {
   es: `index.es.js`,
   cjs: `index.cjs.js`,
-  umd: `index.umd.js`,
 };
 
 const formats = Object.keys(fileName) as Array<keyof typeof fileName>;
@@ -15,10 +14,10 @@ module.exports = defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "processor",
       formats,
       fileName: (format: string) => fileName[format as keyof typeof fileName],
     },
+    minify: "esbuild",
     sourcemap: true,
   },
   plugins: [

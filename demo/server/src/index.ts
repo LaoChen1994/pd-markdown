@@ -1,4 +1,5 @@
-import processor from '@pdchen/markdown-processor';
+// @ts-ignore
+import processor from "@pdchen/markdown-processor";
 
 const text = `|t1|t2|t3|
         |---|---|---|
@@ -16,7 +17,6 @@ const text = `|t1|t2|t3|
         
         ![image](https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=465&dpr=1&s=none)`
 
+
 const tree = processor.parse(text);
-
-
-console.log(tree)
+console.log("tree =>", tree)
