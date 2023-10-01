@@ -1,19 +1,16 @@
 import { Processor, unified } from "unified";
 import { Content } from "mdast";
-import remarkParse from "remark-parse";
-import remarkGfm from "remark-gfm";
-import remarkMDX from "remark-mdx";
 import formatTable from "../plugins/formatTable";
 import formatParagraph from "../plugins/formatParagraph";
 import formatListItem from "../plugins/formatListItem";
 
 const PLUGINS = [
-  [remarkParse, true],
+  ["remark-parse", true],
   [formatTable, true],
   [formatParagraph, true],
   [formatListItem, true],
-  [remarkMDX, true],
-  [remarkGfm, true],
+  ["remarkGfm", true],
+  ["remarkMDX", true],
 ];
 
 class MDProcessor {
@@ -41,6 +38,14 @@ class MDProcessor {
 
     for (const [plugin, enable] of PLUGINS) {
       if (!enable) continue;
+
+      if (typeof plugin === "string") {
+        const p = (await import(plugin)).default;
+
+        processor.use(p);
+        continue;
+      }
+
       processor = processor.use(plugin);
     }
 
