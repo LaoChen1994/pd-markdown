@@ -1,5 +1,7 @@
 import { Processor, unified } from "unified";
 import { Content } from "mdast";
+import remarkGfm from "remark-gfm";
+import remarkMDX from "remark-mdx";
 import formatTable from "../plugins/formatTable";
 import formatParagraph from "../plugins/formatParagraph";
 import formatListItem from "../plugins/formatListItem";
@@ -9,56 +11,59 @@ const PLUGINS = [
   [formatTable, true],
   [formatParagraph, true],
   [formatListItem, true],
-  ["remarkGfm", true],
-  ["remarkMDX", true],
+  [remarkMDX, true],
+  [remarkGfm, true],
 ];
 
 class MDProcessor {
-  private processor: Processor;
+  ready: Promise<Processor>;
   constructor() {
-    this.initProcessor();
+    this.ready = this.initProcessor();
   }
 
   private async initServerDOM() {
-    console.log("init dom server");
+    console.log("dom init");
     if (global.window) {
       console.log("global window is existed =>", global.window);
       return;
     }
 
     const { JSDOM } = await import("jsdom");
+
+    console.log("js dom init");
+
     global.document = new JSDOM().window.document;
     console.log("server dom init done");
   }
 
   private async initProcessor() {
+    console.log("init processor");
     await this.initServerDOM();
 
     let processor = unified();
 
+    const remarkParse = (await import("remark-parse")).default;
+
+    processor.use(remarkParse);
+
     for (const [plugin, enable] of PLUGINS) {
       if (!enable) continue;
-
-      if (typeof plugin === "string") {
-        const p = (await import(plugin)).default;
-
-        processor.use(p);
-        continue;
-      }
-
       processor = processor.use(plugin);
     }
 
-    this.processor = processor;
+    return processor;
   }
 
-  public async parse(content: string) {
-    const data = await this.processor.parse(content);
-    return this.processor.run(data) as Promise<Content>;
-  }
+  public async parse(content: string): Promise<Content | null> {
+    const processor = await this.ready;
 
-  public async getContentTree(content: string) {
-    await this.processor.process(content);
+    if (!processor) return null;
+
+    const data = await processor.parse(content);
+
+    const tree = (await processor.run(data)) as Content;
+
+    return tree;
   }
 }
 
