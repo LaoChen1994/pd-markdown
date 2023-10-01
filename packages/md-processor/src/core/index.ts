@@ -23,7 +23,11 @@ class MDProcessor {
   }
 
   private async initServerDOM() {
-    if (global.window) return;
+    console.log("init dom server");
+    if (global.window) {
+      console.log("global window is existed =>", global.window);
+      return;
+    }
 
     const { JSDOM } = await import("jsdom");
     global.document = new JSDOM().window.document;
