@@ -1,18 +1,13 @@
 import { Processor, unified } from "unified";
 import { Content } from "mdast";
-import remarkGfm from "remark-gfm";
-import remarkMDX from "remark-mdx";
 import formatTable from "../plugins/formatTable";
 import formatParagraph from "../plugins/formatParagraph";
 import formatListItem from "../plugins/formatListItem";
 
 const PLUGINS = [
-  ["remark-parse", true],
   [formatTable, true],
   [formatParagraph, true],
   [formatListItem, true],
-  [remarkMDX, true],
-  [remarkGfm, true],
 ];
 
 class MDProcessor {
@@ -22,7 +17,6 @@ class MDProcessor {
   }
 
   private async initServerDOM() {
-    console.log("dom init");
     if (global.window) {
       console.log("global window is existed =>", global.window);
       return;
@@ -37,16 +31,25 @@ class MDProcessor {
   }
 
   private async initProcessor() {
-    console.log("init processor");
     await this.initServerDOM();
 
     let processor = unified();
 
-    const remarkParse = (await import("remark-parse")).default;
+    const DEFAULT_PLUGINS = await Promise.all([
+      import("remark-parse"),
+      import("remark-mdx"),
+      import("remark-gfm"),
+    ]);
 
-    processor.use(remarkParse);
+    const CUSTOM_PLUGINS = PLUGINS.reduce((plugins, [plugin, enable]) => {
+      if (enable) {
+        plugins.push(plugin);
+      }
 
-    for (const [plugin, enable] of PLUGINS) {
+      return plugins;
+    }, []);
+
+    for (const [plugin, enable] of [...DEFAULT_PLUGINS, ...CUSTOM_PLUGINS]) {
       if (!enable) continue;
       processor = processor.use(plugin);
     }
