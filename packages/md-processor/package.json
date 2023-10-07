@@ -24,6 +24,8 @@
   "license": "MIT",
   "dependencies": {
     "@pdchen/markdown-typings": "workspace:^",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
     "jsdom": "^22.1.0",
     "rehype-attr": "^2.1.4",
     "rehype-ignore": "^1.0.5",

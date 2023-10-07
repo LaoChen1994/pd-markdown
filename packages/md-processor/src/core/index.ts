@@ -1,4 +1,4 @@
-import { Processor, unified } from "unified";
+import { Processor, unified, type Plugin } from "unified";
 import { Content } from "mdast";
 import formatTable from "../plugins/formatTable";
 import formatParagraph from "../plugins/formatParagraph";
@@ -17,16 +17,14 @@ class MDProcessor {
   }
 
   private async initServerDOM() {
-    if (global.window) {
-      console.log("global window is existed =>", global.window);
+    if (window) {
+      console.log("global window is existed =>", window);
       return;
     }
 
     const { JSDOM } = await import("jsdom");
 
-    console.log("js dom init");
-
-    global.document = new JSDOM().window.document;
+    (global.document as any) = new JSDOM().window.document;
     console.log("server dom init done");
   }
 
@@ -35,10 +33,12 @@ class MDProcessor {
 
     let processor = unified();
 
+    console.log("load default plugins");
+
     const DEFAULT_PLUGINS = await Promise.all([
-      import("remark-parse"),
-      import("remark-mdx"),
-      import("remark-gfm"),
+      import("remark-parse").then(res => res.default),
+      import("remark-mdx").then(res => res.default),
+      import("remark-gfm").then(res => res.default),
     ]);
 
     const CUSTOM_PLUGINS = PLUGINS.reduce((plugins, [plugin, enable]) => {
@@ -49,9 +49,8 @@ class MDProcessor {
       return plugins;
     }, []);
 
-    for (const [plugin, enable] of [...DEFAULT_PLUGINS, ...CUSTOM_PLUGINS]) {
-      if (!enable) continue;
-      processor = processor.use(plugin);
+    for (const plugin of [...DEFAULT_PLUGINS, ...CUSTOM_PLUGINS]) {
+      processor = processor.use(plugin as Plugin);
     }
 
     return processor;

@@ -1,4 +1,3 @@
-// @ts-ignore
 import Processor from "@pdchen/markdown-processor";
 
 const text = `|t1|t2|t3|
@@ -14,10 +13,10 @@ const text = `|t1|t2|t3|
         2. 2
         3. 3
         4. 4
-        
+
         ![image](https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=465&dpr=1&s=none)`
 
 const processor = new Processor()
 
-const tree = processor.parse(text);
+const tree = await processor.parse(text);
 console.log("tree =>", tree)

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import processor from '@pdchen/markdown-processor'
+import MDProcessor from '@pdchen/markdown-processor'
 import Render from '@pdchen/markdown-render';
 import "@pdchen/markdown-render/style"
 import './App.css'
@@ -7,6 +7,7 @@ function App() {
   const [tree, setTree] = useState({})
 
   const onChange = async (value: string): Promise<void> => {
+    const processor = new MDProcessor();
     const html = await processor.parse(value)
 
     console.log('html =>', html)

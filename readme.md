@@ -26,7 +26,9 @@ pnpm add @pdchen/markdown-processor
 pnpm add @pdchen/markdown-render
 ```
 
-### Install by npm
+### Install
+
+### npm
 
 ```bash
 # install processor
@@ -37,7 +39,29 @@ npm install @pdchen/markdown-processor
 npm install @pdchen/markdown-render
 ```
 
-## Demo
+### yarn
+
+```bash
+# install processor
+yarn add @pdchen/markdown-processor
+
+# install render component
+
+yarn add @pdchen/markdown-render
+```
+
+### pnpm
+
+```bash
+# install processor
+pnpm install @pdchen/markdown-processor
+
+# install render component
+
+pnpm install @pdchen/markdown-render
+```
+
+## Render & Parse for Browser
 
 ```typescript jsx
 import processor from '@pdchen/markdown-processor'
