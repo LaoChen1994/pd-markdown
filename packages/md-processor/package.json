@@ -13,13 +13,18 @@
       "default": "./dist/index.cjs.js"
     }
   },
-  "types": "dist/index",
+  "types": "dist/index.d.ts",
   "files": [
     "./dist/**/*",
     "./dist/*",
     "./package.json"
   ],
-  "keywords": [],
+  "keywords": [
+    "markdown",
+    "react processor",
+    "nodejs",
+    "browser"
+  ],
   "author": "PD Chen",
   "license": "MIT",
   "dependencies": {

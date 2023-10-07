@@ -17,7 +17,7 @@ class MDProcessor {
   }
 
   private async initServerDOM() {
-    if (window) {
+    if (typeof window !== "undefined") {
       console.log("global window is existed =>", window);
       return;
     }
