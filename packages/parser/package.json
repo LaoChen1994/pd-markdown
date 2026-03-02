@@ -1,0 +1,38 @@
+{
+  "name": "@pd-markdown/parser",
+  "version": "0.1.0",
+  "description": "Markdown parser based on unified/remark",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.ts --configPlugin typescript",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@pd-markdown/utils": "workspace:*",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0",
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "vfile": "^6.0.3"
+  },
+  "sideEffects": false,
+  "license": "MIT"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@pd-markdown/utils",
+  "version": "0.1.0",
+  "description": "Utility functions and types for pd-markdown",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "rollup -c rollup.config.ts --configPlugin typescript",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/unist": "^3.0.3"
+  },
+  "sideEffects": false,
+  "license": "MIT"
+}
