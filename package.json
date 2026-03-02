@@ -1,7 +1,6 @@
 {
   "name": "pd-markdown",
   "version": "1.0.0",
-  "private": true,
   "type": "module",
   "scripts": {
     "build": "pnpm -r run build",
