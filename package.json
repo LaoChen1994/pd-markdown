@@ -1,6 +1,6 @@
 {
   "name": "pd-markdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A modular markdown parsing and rendering library",
   "exports": {
@@ -22,9 +22,15 @@
   },
   "typesVersions": {
     "*": {
-      "parser": ["./packages/parser/dist/index.d.ts"],
-      "utils": ["./packages/utils/dist/index.d.ts"],
-      "web": ["./packages/web/dist/index.d.ts"]
+      "parser": [
+        "./packages/parser/dist/index.d.ts"
+      ],
+      "utils": [
+        "./packages/utils/dist/index.d.ts"
+      ],
+      "web": [
+        "./packages/web/dist/index.d.ts"
+      ]
     }
   },
   "files": [
