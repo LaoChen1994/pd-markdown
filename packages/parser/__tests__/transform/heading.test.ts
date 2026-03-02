@@ -9,7 +9,6 @@ describe('transformHeading', () => {
     const ast = parser.parse('# Hello World')
 
     const heading = ast.children[0] as Heading;
-    console.log('heading =>', heading)
     expect(heading.data?.id).toBe('hello-world')
   })
 
