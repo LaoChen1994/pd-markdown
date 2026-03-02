@@ -2,13 +2,62 @@
   "name": "pd-markdown",
   "version": "1.0.0",
   "type": "module",
+  "description": "A modular markdown parsing and rendering library",
+  "exports": {
+    "./parser": {
+      "types": "./packages/parser/dist/index.d.ts",
+      "import": "./packages/parser/dist/index.mjs",
+      "require": "./packages/parser/dist/index.cjs"
+    },
+    "./utils": {
+      "types": "./packages/utils/dist/index.d.ts",
+      "import": "./packages/utils/dist/index.mjs",
+      "require": "./packages/utils/dist/index.cjs"
+    },
+    "./web": {
+      "types": "./packages/web/dist/index.d.ts",
+      "import": "./packages/web/dist/index.mjs",
+      "require": "./packages/web/dist/index.cjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "parser": ["./packages/parser/dist/index.d.ts"],
+      "utils": ["./packages/utils/dist/index.d.ts"],
+      "web": ["./packages/web/dist/index.d.ts"]
+    }
+  },
+  "files": [
+    "packages/*/dist"
+  ],
   "scripts": {
     "build": "pnpm -r run build",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
-    "clean": "pnpm -r run clean"
+    "clean": "pnpm -r run clean",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0",
+    "yaml": "^2.7.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.2",
@@ -22,5 +71,18 @@
     "tslib": "^2.8.1",
     "typescript": "^5.7.3",
     "vitest": "^3.0.7"
-  }
+  },
+  "keywords": [
+    "markdown",
+    "parser",
+    "react",
+    "remark",
+    "unified"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pidan/pd-markdown.git"
+  },
+  "sideEffects": false
 }
