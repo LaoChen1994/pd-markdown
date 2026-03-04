@@ -88,7 +88,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pidan/pd-markdown.git"
+    "url": "https://github.com/LaoChen1994/pd-markdown"
   },
   "sideEffects": false
 }
