@@ -1,6 +1,6 @@
 {
   "name": "pd-markdown",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "description": "A modular markdown parsing and rendering library",
   "exports": {
@@ -86,6 +86,7 @@
     "unified"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/LaoChen1994/pd-markdown",
   "repository": {
     "type": "git",
     "url": "https://github.com/LaoChen1994/pd-markdown"
