@@ -1,5 +1,5 @@
 {
-  "name": "@pd-markdown/parser",
+  "name": "pd-markdown-parser",
   "version": "0.1.0",
   "description": "Markdown parser based on unified/remark",
   "type": "module",
@@ -21,7 +21,7 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pd-markdown/utils": "workspace:*",
+    "pd-markdown-utils": "workspace:*",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",

@@ -1,6 +1,6 @@
 import type { FC, CSSProperties } from 'react'
 import type { Root } from 'mdast'
-import { createParser, type ParserOptions } from '@pd-markdown/parser'
+import { createParser, type ParserOptions } from 'pd-markdown-parser'
 import { MarkdownContext } from './context'
 import { NodeRenderer } from './NodeRenderer'
 import type { ComponentMap } from './defaults'

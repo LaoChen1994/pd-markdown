@@ -1,5 +1,5 @@
 {
-  "name": "@pd-markdown/web",
+  "name": "pd-markdown-web",
   "version": "0.1.0",
   "description": "React components for rendering markdown",
   "type": "module",
@@ -19,8 +19,8 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@pd-markdown/parser": "workspace:*",
-    "@pd-markdown/utils": "workspace:*"
+    "pd-markdown-parser": "workspace:*",
+    "pd-markdown-utils": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

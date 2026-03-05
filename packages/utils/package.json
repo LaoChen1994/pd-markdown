@@ -1,5 +1,5 @@
 {
-  "name": "@pd-markdown/utils",
+  "name": "pd-markdown-utils",
   "version": "0.1.0",
   "description": "Utility functions and types for pd-markdown",
   "type": "module",

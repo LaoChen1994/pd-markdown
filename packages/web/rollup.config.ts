@@ -30,7 +30,7 @@ export default defineConfig({
     'react',
     'react-dom',
     'react/jsx-runtime',
-    '@pd-markdown/utils',
-    '@pd-markdown/parser',
+    'pd-markdown-utils',
+    'pd-markdown-parser',
   ],
 })

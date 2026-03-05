@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import type { Root } from 'mdast'
-import { createParser, type ParserOptions } from '@pd-markdown/parser'
+import { createParser, type ParserOptions } from 'pd-markdown-parser'
 
 // Cached parser instance
 let cachedParser: ReturnType<typeof createParser> | null = null

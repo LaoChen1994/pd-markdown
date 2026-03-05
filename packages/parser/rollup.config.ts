@@ -27,7 +27,7 @@ export default defineConfig({
     }),
   ],
   external: [
-    '@pd-markdown/utils',
+    'pd-markdown-utils',
     'unified',
     'remark-parse',
     'remark-gfm',

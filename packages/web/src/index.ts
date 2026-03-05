@@ -1,6 +1,7 @@
 // Components
 export { MarkdownRenderer, type MarkdownRendererProps } from './components/MarkdownRenderer'
 export { NodeRenderer, type NodeRendererProps } from './components/NodeRenderer'
+export { StreamMarkdownRenderer, type StreamMarkdownRendererProps } from './components/StreamMarkdownRenderer'
 export { MarkdownContext, useMarkdownContext, type MarkdownContextValue } from './components/context'
 
 // Default components
@@ -35,3 +36,9 @@ export {
 
 // Hooks
 export { useMarkdown } from './hooks/useMarkdown'
+export {
+  useStreamMarkdown,
+  type StreamState,
+  type UseStreamMarkdownOptions,
+  type UseStreamMarkdownReturn,
+} from './hooks/useStreamMarkdown'

@@ -1,0 +1,26 @@
+{
+  "name": "web-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "pd-markdown-parser": "workspace:*",
+    "pd-markdown-utils": "workspace:*",
+    "pd-markdown-web": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "~5.7.3",
+    "vite": "^5.4.14",
+    "@types/mdast": "^4.0.4"
+  }
+}

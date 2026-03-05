@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { MarkdownRenderer } from '../src/components/MarkdownRenderer'
-import { createParser } from '@pd-markdown/parser'
+import { createParser } from 'pd-markdown-parser'
 
 describe('MarkdownRenderer', () => {
   it('should render markdown string', () => {

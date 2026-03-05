@@ -1,6 +1,6 @@
 import type { Root, Heading, PhrasingContent } from 'mdast'
 import { visit } from 'unist-util-visit'
-import { uniqueSlugify } from '@pd-markdown/utils'
+import { uniqueSlugify } from 'pd-markdown-utils'
 
 /**
  * Extract text content from phrasing content nodes
