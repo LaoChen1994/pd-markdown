@@ -11,9 +11,7 @@
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "pd-markdown-parser": "workspace:*",
-    "pd-markdown-utils": "workspace:*",
-    "pd-markdown-web": "workspace:*"
+    "pd-markdown": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^19.2.7",

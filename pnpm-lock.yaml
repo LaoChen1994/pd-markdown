@@ -69,15 +69,9 @@ importers:
 
   examples/web-demo:
     dependencies:
-      pd-markdown-parser:
+      pd-markdown:
         specifier: workspace:*
-        version: link:../../packages/parser
-      pd-markdown-utils:
-        specifier: workspace:*
-        version: link:../../packages/utils
-      pd-markdown-web:
-        specifier: workspace:*
-        version: link:../../packages/web
+        version: link:../..
       react:
         specifier: ^19.2.0
         version: 19.2.4
