@@ -1,6 +1,6 @@
 {
   "name": "pd-markdown",
-  "version": "2.0.4-1",
+  "version": "2.0.4-2",
   "type": "module",
   "main": "./packages/web/dist/index.cjs",
   "module": "./packages/web/dist/index.mjs",
@@ -73,9 +73,6 @@
     }
   },
   "dependencies": {
-    "pd-markdown-parser": "workspace:*",
-    "pd-markdown-utils": "workspace:*",
-    "pd-markdown-web": "workspace:*",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
@@ -84,6 +81,9 @@
     "yaml": "^2.7.0"
   },
   "devDependencies": {
+    "pd-markdown-parser": "workspace:*",
+    "pd-markdown-utils": "workspace:*",
+    "pd-markdown-web": "workspace:*",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-typescript": "^12.1.2",

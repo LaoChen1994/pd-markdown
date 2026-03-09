@@ -16,11 +16,17 @@ export default defineConfig([
         entryFileNames: '[name].mjs',
         preserveModules: true,
         preserveModulesRoot: 'src',
+        paths: {
+          'pd-markdown-utils': 'pd-markdown/utils',
+        },
       },
       {
         file: 'dist/index.cjs',
         format: 'cjs',
         sourcemap: true,
+        paths: {
+          'pd-markdown-utils': 'pd-markdown/utils',
+        },
       },
     ],
     plugins: [
@@ -35,6 +41,7 @@ export default defineConfig([
     ],
     external: [
       'pd-markdown-utils',
+      'pd-markdown/utils',
       'unified',
       'remark-parse',
       'remark-gfm',
@@ -49,10 +56,14 @@ export default defineConfig([
     output: {
       file: 'dist/index.d.ts',
       format: 'esm',
+      paths: {
+        'pd-markdown-utils': 'pd-markdown/utils',
+      },
     },
     plugins: [dts()],
     external: [
       'pd-markdown-utils',
+      'pd-markdown/utils',
       'unified',
       'remark-parse',
       'remark-gfm',

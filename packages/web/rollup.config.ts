@@ -21,12 +21,20 @@ export default defineConfig([
         chunkFileNames: 'chunks/[name]-[hash].mjs',
         preserveModules: true,
         preserveModulesRoot: 'src',
+        paths: {
+          'pd-markdown-utils': 'pd-markdown/utils',
+          'pd-markdown-parser': 'pd-markdown/parser',
+        },
       },
       {
         dir: 'dist',
         format: 'cjs',
         sourcemap: true,
         entryFileNames: '[name].cjs',
+        paths: {
+          'pd-markdown-utils': 'pd-markdown/utils',
+          'pd-markdown-parser': 'pd-markdown/parser',
+        },
       },
     ],
     plugins: [
@@ -45,6 +53,8 @@ export default defineConfig([
       'react/jsx-runtime',
       'pd-markdown-utils',
       'pd-markdown-parser',
+      'pd-markdown/utils',
+      'pd-markdown/parser',
     ],
   },
   // Type declarations bundle
@@ -53,6 +63,10 @@ export default defineConfig([
     output: {
       file: 'dist/index.d.ts',
       format: 'esm',
+      paths: {
+        'pd-markdown-utils': 'pd-markdown/utils',
+        'pd-markdown-parser': 'pd-markdown/parser',
+      },
     },
     plugins: [dts()],
     external: [
@@ -61,6 +75,8 @@ export default defineConfig([
       'react/jsx-runtime',
       'pd-markdown-utils',
       'pd-markdown-parser',
+      'pd-markdown/utils',
+      'pd-markdown/parser',
       'mdast',
     ],
   },
