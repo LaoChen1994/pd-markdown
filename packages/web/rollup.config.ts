@@ -7,25 +7,26 @@ import { defineConfig } from 'rollup'
 export default defineConfig([
   // JS bundle
   {
-    input: 'src/index.ts',
+    input: {
+      index: 'src/index.ts',
+      server: 'src/server.ts',
+      client: 'src/client.ts',
+    },
     output: [
       {
-        file: 'dist/index.mjs',
+        dir: 'dist',
         format: 'esm',
         sourcemap: true,
-        paths: {
-          'pd-markdown-utils': 'pd-markdown/utils',
-          'pd-markdown-parser': 'pd-markdown/parser',
-        },
+        entryFileNames: '[name].mjs',
+        chunkFileNames: 'chunks/[name]-[hash].mjs',
+        preserveModules: true,
+        preserveModulesRoot: 'src',
       },
       {
-        file: 'dist/index.cjs',
+        dir: 'dist',
         format: 'cjs',
         sourcemap: true,
-        paths: {
-          'pd-markdown-utils': 'pd-markdown/utils',
-          'pd-markdown-parser': 'pd-markdown/parser',
-        },
+        entryFileNames: '[name].cjs',
       },
     ],
     plugins: [
@@ -52,10 +53,6 @@ export default defineConfig([
     output: {
       file: 'dist/index.d.ts',
       format: 'esm',
-      paths: {
-        'pd-markdown-utils': 'pd-markdown/utils',
-        'pd-markdown-parser': 'pd-markdown/parser',
-      },
     },
     plugins: [dts()],
     external: [

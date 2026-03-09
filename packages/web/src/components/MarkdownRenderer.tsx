@@ -1,7 +1,6 @@
 import type { FC, CSSProperties } from 'react'
 import type { Root } from 'mdast'
 import { createParser, type ParserOptions } from 'pd-markdown-parser'
-import { MarkdownContext } from './context'
 import { NodeRenderer } from './NodeRenderer'
 import type { ComponentMap } from './defaults'
 
@@ -61,10 +60,8 @@ export const MarkdownRenderer: FC<MarkdownRendererProps> = ({
   }
 
   return (
-    <MarkdownContext.Provider value={{ components }}>
-      <div className={className} style={style}>
-        <NodeRenderer node={tree} />
-      </div>
-    </MarkdownContext.Provider>
+    <div className={className} style={style}>
+      <NodeRenderer node={tree} components={components} />
+    </div>
   )
 }

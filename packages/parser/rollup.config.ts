@@ -10,20 +10,17 @@ export default defineConfig([
     input: 'src/index.ts',
     output: [
       {
-        file: 'dist/index.mjs',
+        dir: 'dist',
         format: 'esm',
         sourcemap: true,
-        paths: {
-          'pd-markdown-utils': 'pd-markdown/utils',
-        },
+        entryFileNames: '[name].mjs',
+        preserveModules: true,
+        preserveModulesRoot: 'src',
       },
       {
         file: 'dist/index.cjs',
         format: 'cjs',
         sourcemap: true,
-        paths: {
-          'pd-markdown-utils': 'pd-markdown/utils',
-        },
       },
     ],
     plugins: [
@@ -52,9 +49,6 @@ export default defineConfig([
     output: {
       file: 'dist/index.d.ts',
       format: 'esm',
-      paths: {
-        'pd-markdown-utils': 'pd-markdown/utils',
-      },
     },
     plugins: [dts()],
     external: [

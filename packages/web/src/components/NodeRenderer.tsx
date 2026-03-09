@@ -1,18 +1,18 @@
 import type { FC, ReactNode } from 'react'
 import type { Content, Root, PhrasingContent, Parent } from 'mdast'
-import { useMarkdownContext } from './context'
 import { defaultComponents } from './defaults'
+import type { ComponentMap } from './defaults'
 
 export interface NodeRendererProps {
   node: Content | Root
+  /** Custom component overrides passed down the tree */
+  components?: Partial<ComponentMap>
 }
 
 /**
  * Recursive node renderer that renders AST nodes to React elements
  */
-export const NodeRenderer: FC<NodeRendererProps> = ({ node }) => {
-  const { components } = useMarkdownContext()
-
+export const NodeRenderer: FC<NodeRendererProps> = ({ node, components = {} }) => {
   // Get the component for this node type
   const getComponent = (type: string) => {
     return components[type] || defaultComponents[type]
@@ -21,7 +21,7 @@ export const NodeRenderer: FC<NodeRendererProps> = ({ node }) => {
   // Render children nodes
   const renderChildren = (children: Content[]): ReactNode => {
     return children.map((child, index) => (
-      <NodeRenderer key={index} node={child} />
+      <NodeRenderer key={index} node={child} components={components} />
     ))
   }
 

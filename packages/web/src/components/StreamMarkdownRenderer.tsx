@@ -1,8 +1,9 @@
+'use client'
+
 import { useState, useEffect, useRef, useMemo } from 'react'
 import type { CSSProperties, FC, ReactNode } from 'react'
 import type { Root } from 'mdast'
 import { createParser, type ParserOptions } from 'pd-markdown-parser'
-import { MarkdownContext } from './context'
 import { NodeRenderer } from './NodeRenderer'
 import type { ComponentMap } from './defaults'
 
@@ -198,7 +199,6 @@ export const StreamMarkdownRenderer: FC<StreamMarkdownRendererProps> = ({
   }
 
   return (
-    <MarkdownContext.Provider value={{ components }}>
       <div ref={containerRef} className={className} style={wrapperStyle}>
         {ast.children.map((child, index) => {
           const isNewBlock = animatingIndices.has(index)
@@ -222,7 +222,7 @@ export const StreamMarkdownRenderer: FC<StreamMarkdownRendererProps> = ({
               className={blockClassName}
               data-stream-block={isLastBlock && isStreaming ? 'active' : undefined}
             >
-              <NodeRenderer node={child} />
+              <NodeRenderer node={child} components={components} />
               {/* Show cursor at the very end of the last block */}
               {showCursor && isStreaming && isLastBlock && (
                 <StreamCursor customElement={cursorElement} />
@@ -236,6 +236,5 @@ export const StreamMarkdownRenderer: FC<StreamMarkdownRendererProps> = ({
           <StreamCursor customElement={cursorElement} />
         )}
       </div>
-    </MarkdownContext.Provider>
   )
 }

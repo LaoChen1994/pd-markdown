@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useRef, useCallback, useEffect } from 'react'
 import type { Root } from 'mdast'
 import { createParser, type ParserOptions } from 'pd-markdown-parser'

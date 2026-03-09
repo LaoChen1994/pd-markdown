@@ -9,6 +9,7 @@
   "exports": {
     ".": {
       "types": "./packages/web/dist/index.d.ts",
+      "react-server": "./packages/web/dist/server.mjs",
       "import": "./packages/web/dist/index.mjs",
       "require": "./packages/web/dist/index.cjs"
     },
@@ -24,6 +25,7 @@
     },
     "./web": {
       "types": "./packages/web/dist/index.d.ts",
+      "react-server": "./packages/web/dist/server.mjs",
       "import": "./packages/web/dist/index.mjs",
       "require": "./packages/web/dist/index.cjs"
     }
@@ -69,6 +71,9 @@
     }
   },
   "dependencies": {
+    "pd-markdown-parser": "workspace:*",
+    "pd-markdown-utils": "workspace:*",
+    "pd-markdown-web": "workspace:*",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
