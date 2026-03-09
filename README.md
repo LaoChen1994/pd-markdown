@@ -1,5 +1,10 @@
 # pd-markdown
 
+[![npm version](https://img.shields.io/npm/v/pd-markdown.svg?style=flat-square)](https://www.npmjs.com/package/pd-markdown)
+[![tests](https://img.shields.io/badge/tests-163%20passed-success.svg?style=flat-square)](https://github.com/LaoChen1994/pd-markdown/actions)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+
 一个现代化的 Markdown 解析和渲染工具库，基于 unified/remark 构建，专为 React 和现代流式 Web 应用设计。
 
 ## 特性
@@ -168,12 +173,44 @@ const { source, ast, append, done, reset } = useStreamMarkdown({
 
 #### 自定义组件覆盖
 
+`pd-markdown/web` 导出了所有的默认组件及其对应的 Props 类型（例如 `Heading`, `HeadingProps`, `Code`, `CodeProps` 等）。
+
+你可以在自定义渲染器中引入它们，以实现**在默认样式基础上追加自定义功能**（如添加点击复制按钮、锚点链接），或者完全重写某个标签。
+
 ```tsx
-import { MarkdownRenderer, type ComponentMap } from 'pd-markdown/web'
+import { 
+  MarkdownRenderer, 
+  Heading, 
+  Code,
+  type HeadingProps, 
+  type ComponentMap 
+} from 'pd-markdown/web'
 
 const customComponents: Partial<ComponentMap> = {
-  heading: ({ node, children }) => (
-    <h2 style={{ color: 'blue' }}>{children}</h2>
+  // 1. 包装默认组件 (在已有 Header 旁添加一个可点击的锚点)
+  heading: (props: HeadingProps) => {
+    return (
+      <div className="custom-heading-wrapper group relative">
+        <Heading {...props} />
+        {props.node.data?.id && (
+          <a 
+            href={\`#\${props.node.data.id}\`} 
+            className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 text-blue-500"
+          >
+            #
+          </a>
+        )}
+      </div>
+    )
+  },
+
+  // 2. 完全重写组件 (使用你自己的语法高亮库)
+  code: ({ node, children }) => (
+    <pre className="my-custom-pre bg-gray-900 text-white p-4 rounded">
+      <code className={\`language-\${node.lang || 'text'}\`}>
+        {node.value}
+      </code>
+    </pre>
   ),
 }
 
