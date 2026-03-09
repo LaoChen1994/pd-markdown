@@ -11,7 +11,9 @@
 - ⚛️ **React 组件** - 提供开箱即用的 React 渲染组件
 - 🎨 **可定制** - 支持自定义组件覆盖（Heading, Code, Table 等）
 - 🔗 **自动锚点** - 标题自动生成 slug 锚点
-- 📦 **Tree-shakable** - 支持 ESM，优化打包体积
+- 📦 **Tree-shakable** - 基于 ESM 设计，支持按需加载，最小化打包体积
+- 🛠️ **现代兼容性** - 完美支持 Subpath Exports，确保在 Next.js、Vite 等现代开发环境下无缝解析
+- 🛡️ **类型友好** - 完整的 TypeScript 定义，提供极致的开发体验
 
 ## 安装
 
@@ -29,10 +31,10 @@ yarn add pd-markdown
 ## 模块结构
 
 | 模块路径 | 描述 |
-| --- | --- |
-| `pd-markdown/parser` | Markdown 解析器，将 Markdown 转换为 AST |
-| `pd-markdown/web` | React 组件和 Hooks，用于渲染 Markdown 和处理流式内容 |
-| `pd-markdown/utils` | 工具函数库，提供 AST 操作和字符串处理 |
+| :--- | :--- |
+| `pd-markdown/parser` | **核心解析器**：将 Markdown 转换为标准 AST |
+| `pd-markdown/web` | **React 渲染层**：包含渲染组件与流式处理 Hooks |
+| `pd-markdown/utils` | **通用工具**：提供 AST 遍历、Slug 生成及字符串处理 |
 
 ## 快速开始
 

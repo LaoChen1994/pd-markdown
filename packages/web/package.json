@@ -15,8 +15,8 @@
   "types": "./dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
-    "build": "rollup -c rollup.config.ts --configPlugin typescript",
-    "clean": "rm -rf dist *.tsbuildinfo"
+    "build": "rollup -c rollup.config.ts --configPlugin typescript && rm -rf dist/types",
+    "clean": "rm -rf dist *.tsbuildinfo .rollup.cache"
   },
   "dependencies": {
     "pd-markdown-parser": "workspace:*",
