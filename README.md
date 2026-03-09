@@ -10,6 +10,7 @@
 - 📋 **Frontmatter** - 支持 YAML frontmatter 解析
 - ⚛️ **React 组件** - 提供开箱即用的 React 渲染组件
 - 🎨 **可定制** - 支持自定义组件覆盖（Heading, Code, Table 等）
+- 🚀 **RSC & SSG 友好** - 完美支持 React Server Components，零水和 (Zero Hydration) 成本
 - 🔗 **自动锚点** - 标题自动生成 slug 锚点
 - 📦 **Tree-shakable** - 基于 ESM 设计，支持按需加载，最小化打包体积
 - 🛠️ **现代兼容性** - 完美支持 Subpath Exports，确保在 Next.js、Vite 等现代开发环境下无缝解析
@@ -54,7 +55,35 @@ This is a **markdown** document.
 }
 ```
 
+### 在 Next.js Server Components (RSC) 中使用
+
+`pd-markdown` 深度优化了服务端渲染场景。`MarkdownRenderer` 是一个 **Shared Component**，可以直接在服务端运行，生成纯 HTML，浏览器端**零 JS 负担**。
+
+```tsx
+// app/page.tsx (Next.js Server Component)
+import { getMarkdownAst } from './lib/markdown'
+import { MarkdownRenderer } from 'pd-markdown/web'
+
+export default async function Page() {
+  // 1. 服务端解析 Markdown 为 AST
+  const ast = await getMarkdownAst(content)
+
+  // 2. 服务端直接渲染为静态 HTML
+  return (
+    <main>
+      <MarkdownRenderer ast={ast} />
+    </main>
+  )
+}
+```
+
+> [!TIP]
+> 这种模式完美支持 **SSG (静态站点生成)**，搜索引擎优化 (SEO) 友好且交互响应极快。
+
 ### 流式渲染 (AI 场景)
+
+> [!NOTE]
+> 流式渲染组件 (`StreamMarkdownRenderer`) 需要在客户端运行，已内置 `'use client'` 指令。
 
 ```tsx
 import { StreamMarkdownRenderer, useStreamMarkdown } from 'pd-markdown/web'
@@ -163,6 +192,13 @@ import { traverseAst, findNodes, slugify } from 'pd-markdown/utils'
 // 提取所有标题
 const headings = findNodes(ast, 'heading')
 ```
+
+## 示例 (Demos)
+
+你可以参考 `examples` 目录下的项目：
+
+- **[web-demo](./examples/web-demo)**: 基础的 Vite/React 客户端渲染示例。
+- **[nextjs-demo](./examples/nextjs-demo)**: 基于 Next.js 15 App Router 的 **Server Components (RSC)** 与 **SSG** 最佳实践示例。
 
 ## 开发
 
