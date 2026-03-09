@@ -7,7 +7,8 @@ dist/
 
 # example build outputs
 # examples/nextjs-demo/.next/BUILD_ID类似这种
-**/.next/**
+examples/.next/
+
 
 # IDE
 .idea/
