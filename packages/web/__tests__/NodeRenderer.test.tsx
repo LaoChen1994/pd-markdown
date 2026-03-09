@@ -1,14 +1,12 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { NodeRenderer } from '../src/components/NodeRenderer'
-import { MarkdownContext } from '../src/components/context'
 import type { Root, Heading, Paragraph } from 'mdast'
+import React from 'react'
 
-const renderWithContext = (node: any, components = {}) => {
+const renderNode = (node: any, components = {}) => {
   return render(
-    <MarkdownContext.Provider value={{ components }}>
-      <NodeRenderer node={node} />
-    </MarkdownContext.Provider>
+    <NodeRenderer node={node} components={components} />
   )
 }
 
@@ -24,7 +22,7 @@ describe('NodeRenderer', () => {
       ],
     }
 
-    renderWithContext(root)
+    renderNode(root)
     expect(screen.getByText('Hello')).toBeInTheDocument()
   })
 
@@ -35,7 +33,7 @@ describe('NodeRenderer', () => {
       children: [{ type: 'text', value: 'Title' }],
     }
 
-    renderWithContext(heading)
+    renderNode(heading)
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Title')
   })
 
@@ -47,7 +45,7 @@ describe('NodeRenderer', () => {
       data: { id: 'hello' },
     }
 
-    renderWithContext(heading)
+    renderNode(heading)
     expect(screen.getByRole('heading')).toHaveAttribute('id', 'hello')
   })
 
@@ -62,7 +60,7 @@ describe('NodeRenderer', () => {
       ],
     }
 
-    const { container } = renderWithContext(paragraph)
+    const { container } = renderNode(paragraph)
     expect(container.querySelector('strong')).toHaveTextContent('bold')
     expect(container.querySelector('em')).toHaveTextContent('italic')
   })
@@ -76,7 +74,7 @@ describe('NodeRenderer', () => {
     }
 
     // Should not throw and should try to render children
-    renderWithContext(unknown)
+    renderNode(unknown)
     expect(screen.getByText('Content')).toBeInTheDocument()
   })
 
@@ -91,7 +89,7 @@ describe('NodeRenderer', () => {
       <span data-testid="custom">{children}</span>
     )
 
-    renderWithContext(heading, { heading: CustomHeading })
+    renderNode(heading, { heading: CustomHeading })
     expect(screen.getByTestId('custom')).toHaveTextContent('Custom')
   })
 })

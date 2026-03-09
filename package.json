@@ -1,6 +1,6 @@
 {
   "name": "pd-markdown",
-  "version": "2.0.2",
+  "version": "2.0.4-2",
   "type": "module",
   "main": "./packages/web/dist/index.cjs",
   "module": "./packages/web/dist/index.mjs",
@@ -9,6 +9,7 @@
   "exports": {
     ".": {
       "types": "./packages/web/dist/index.d.ts",
+      "react-server": "./packages/web/dist/server.mjs",
       "import": "./packages/web/dist/index.mjs",
       "require": "./packages/web/dist/index.cjs"
     },
@@ -24,6 +25,7 @@
     },
     "./web": {
       "types": "./packages/web/dist/index.d.ts",
+      "react-server": "./packages/web/dist/server.mjs",
       "import": "./packages/web/dist/index.mjs",
       "require": "./packages/web/dist/index.cjs"
     }
@@ -48,12 +50,14 @@
     "packages/*/dist"
   ],
   "scripts": {
-    "build": "pnpm -r run build",
+    "build": "pnpm -r --filter \"./packages/*\" run build",
+    "build:examples": "pnpm -r --filter \"./examples/*\" run build",
+    "build:all": "pnpm -r run build",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
-    "clean": "pnpm -r run clean",
+    "clean": "pnpm -r --filter \"./packages/*\" run clean",
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
@@ -77,6 +81,9 @@
     "yaml": "^2.7.0"
   },
   "devDependencies": {
+    "pd-markdown-parser": "workspace:*",
+    "pd-markdown-utils": "workspace:*",
+    "pd-markdown-web": "workspace:*",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-typescript": "^12.1.2",
