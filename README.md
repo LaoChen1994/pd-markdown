@@ -235,7 +235,8 @@ const headings = findNodes(ast, 'heading')
 你可以参考 `examples` 目录下的项目：
 
 - **[web-demo](./examples/web-demo)**: 基础的 Vite/React 客户端渲染示例。
-- **[nextjs-demo](./examples/nextjs-demo)**: 基于 Next.js 15 App Router 的 **Server Components (RSC)** 与 **SSG** 最佳实践示例。
+- **[nextjs-demo](./examples/nextjs-demo)**: 基于 Next.js 15 App Router 的 **Server Components (RSC)** 最佳实践示例。
+- **[next-ssg](./examples/next-ssg)**: 基于 Next.js 15 App Router 的纯静态生成 (**SSG**) 渲染示例。
 
 ## 开发
 
