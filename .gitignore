@@ -6,8 +6,8 @@ dist/
 *.tsbuildinfo
 
 # example build outputs
-# examples/nextjs-demo/.next/BUILD_ID类似这种
-examples/.next/
+examples/*/.next/
+examples/*/dist/
 
 
 # IDE
